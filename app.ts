@@ -102,7 +102,7 @@ router.get("/api/jobs", async (ctx) => {
   });
 
   ctx.response.status = 200;
-  ctx.response.headers.set("Access-Control-Allow-Headers", "*");
+  ctx.response.headers.set("Access-Control-Allow-Origin", "*");
   ctx.response.body = { success: true, jobs: jobList };
 });
 
