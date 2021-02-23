@@ -4,6 +4,10 @@ import {
   DOMParser,
   Element,
 } from "https://deno.land/x/deno_dom/deno-dom-wasm.ts";
+import { parse } from "https://deno.land/std@0.88.0/flags/mod.ts";
+
+const { args } = Deno;
+const argPort = parse(args).port;
 
 enum IJobType {
   full = "Full Time",
@@ -106,4 +110,4 @@ const app = new Application();
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-await app.listen({ port: Number(config().PORT) });
+await app.listen({ port: Number(argPort) || Number(config().PORT) });
